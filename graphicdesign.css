@@ -1,0 +1,549 @@
+/* ─────────────────────────────
+   FONT
+   ───────────────────────────── */
+@font-face {
+  font-family: Satoshi;
+  src: url(assets/fonts/Satoshi-Variable.ttf);
+}
+
+/* ─────────────────────────────
+   THEME VARIABLES
+   navy & cream only
+   ───────────────────────────── */
+:root {
+  --navy: rgb(5,25,52);
+  --cream: rgb(255,243,229);
+
+  /* default = night */
+  --bg-color: var(--navy);
+  --fg-color: var(--cream);
+  --line-color: var(--cream);
+  --shadow-color: rgba(255,243,229,0.6);
+}
+
+body.theme-light {
+  --bg-color: var(--cream);
+  --fg-color: var(--navy);
+  --line-color: var(--navy);
+  --shadow-color: rgba(5,25,52,0.55);
+}
+
+/* ─────────────────────────────
+   GLOBAL
+   ───────────────────────────── */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+}
+
+
+
+
+/* ─────────────────────────────
+   MAIN GRID LAYOUT
+   ───────────────────────────── */
+.cont {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 5% 90% 5%;
+  height: 100vh;
+  width: 100vw;
+}
+
+.left,
+.right {
+  color: var(--fg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left {
+  font-family: "meno-banner","serif";
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+}
+
+.right {
+  grid-column: 3 / 3;
+  grid-row: 2 / 3;
+}
+
+.line {
+  height: 45%;
+  background-color: var(--line-color);
+  width: 2px;
+}
+.right-line {
+  height:100%;
+  width:2px;
+  background-color: var(--line-color);
+}
+
+.nav {
+  color: var(--fg-color);
+  text-align: center;
+  padding: 50px;
+  font-size: clamp(0.8rem, 1.4vw, 20px);
+}
+
+.mid {
+  grid-column-start:2;
+  grid-row-start:2;
+  grid-column-end:3;
+  grid-row-end:3;
+  display:flex;
+  flex-direction:column;
+}
+.headline{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  height:5%;
+  margin-top:3%;
+}
+
+.mid-line{
+  display:flex;
+  flex-direction:column;
+ overflow-y:auto;
+ align-items: center;
+ height:85%;
+ margin-top:3%;
+ gap:15%;
+   /* NEW */
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.work-cont {
+  align-items:center;
+
+  display:flex;
+  flex-direction: column;
+  width:78%;
+  gap:4%;
+  min-height:100%;
+  scroll-snap-align: center;
+}
+
+.title{
+  display:flex;
+  justify-content: start;
+  align-items: center;
+  width:100%;
+  height:10%;
+  color: ;
+font-size: clamp(22px, 4vw, 30px);
+  font-weight:500;
+    font-family: Satoshi;
+}
+.desc {
+   display:flex;
+  justify-content: start;
+  align-items: center;
+  text-align: justify;
+  height:auto;
+   font-size: clamp(14px, 2vw, 18px);
+    font-family: Satoshi;
+    letter-spacing:0.2px;
+}
+.work-x{
+  display:flex;
+  flex-direction: row;
+  width:100%;
+  overflow-y:none;
+  overflow-x:scroll;
+  gap:20%;
+  justify-content: space-evenly;
+  
+}
+.work-x img {
+    width:100%;
+    height:100%;
+}
+
+.work-x2{
+  display:flex;
+  flex-direction: row;
+  width:100%;
+  overflow-y:none;
+  overflow-x:scroll;
+  gap:5%;
+  justify-content: space-between;
+  
+}
+.work-x2 img {
+    width:100%;
+    height:100%;
+}
+
+.work-y {
+  width: 60%;
+  height: 100%; /* full container height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* keeps clean edges */
+}
+
+.work-y img {
+  height: 100%;   /* the key fix */
+  width: auto;    /* keep aspect ratio */
+  object-fit: contain;
+  display: block;
+}
+/* ─────────────────────────────
+   LOGO
+   ───────────────────────────── */
+.logo {
+
+}
+
+#logo {
+  color: var(--fg-color);
+  width: clamp(35px, 4vw, 65px);
+  height: auto;
+  filter: drop-shadow(1px 2px 4px var(--shadow-color));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#logo:hover {
+  transform: scale(1.03);
+  filter:
+    drop-shadow(0px 0px 4px var(--shadow-color))
+    drop-shadow(0px 0px 8px var(--shadow-color));
+}
+
+/* ─────────────────────────────
+   HAMBURGER MENU
+────────────────────────────── */
+.hamburger {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001; /* stays clickable even when overlay fades in */
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--fg-color);
+  border-radius: 4px;
+  transition: transform 0.35s ease, opacity 0.35s ease, background-color 0.35s ease;
+}
+
+/* ——— FIXED HAMBURGER → X animation ——— */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(18px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-18px) rotate(-45deg);
+}
+
+
+/* ——— FOOTER ——— */
+.site-footer {
+ color: var(--fg-color);
+font-size: clamp(0.6rem, 1vw, 14px);
+grid-column: 2 / 3;
+grid-row: 3;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+  font-family:"meno-banner","serif";
+}
+
+/* ─────────────────────────────
+   NAVIGATION OVERLAY
+────────────────────────────── */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(5,25,52,0.92);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 999;
+}
+
+body.theme-light .nav-overlay {
+  background-color: rgba(255,243,229,0.92);
+}
+
+/* OPEN */
+.nav-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* INNER CONTAINER */
+.nav-overlay-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden; /* prevent horizontal scroll */
+  align-items: center;
+}
+
+/* HEADER — THEME SWITCH */
+.nav-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+}
+
+.theme-toggle img {
+  width: 28px;
+  height: 28px;
+  display: block;
+  object-fit: contain;
+  filter: none;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* default (dark mode) – moon shown normally */
+.theme-toggle img {
+  filter: none;
+}
+
+/* LIGHT MODE — invert Sun.svg to navy */
+body.theme-light .theme-toggle img {
+  filter: brightness(0) saturate(100%) invert(9%) sepia(26%) saturate(1339%) hue-rotate(183deg) brightness(95%) contrast(92%);
+}
+/*──────────────────────────────
+   MAIN MENU WRAPPER
+────────────────────────────── */
+.nav-overlay-menu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+  overflow-y: auto;
+  overflow-x: hidden; /* prevent horizontal scroll */
+  height: 85%;
+}
+
+.nav-overlay-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.nav-overlay-menu > ul > li {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ─────────────────────────────
+   TOP LEVEL LINKS
+────────────────────────────── */
+.nav-overlay-menu a,
+.nav-item-toggle {
+  font-family: "meno-banner","serif";
+  color: var(--fg-color);
+  font-size: clamp(1.35rem, 2.4vw, 2.1rem);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  padding: 20px 0;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transform: scale(1);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+
+.nav-item-toggle{
+}
+
+/* only scale the text, NOT the arrow */
+.nav-item-toggle span:first-child {
+  display: inline-block;
+  transform: scale(1);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+
+.nav-item-toggle:hover span:first-child {
+  transform: scale(1.05);
+}
+
+/* general hover scale for Home / About / Contact */
+.nav-overlay-menu > ul > li > a {
+  display: inline-block;
+  transform: scale(1);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+
+.nav-overlay-menu > ul > li > a:hover {
+  transform: scale(1.05);
+}
+
+/* DIVIDERS */
+.nav-overlay-menu hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.22);
+  margin: 0;
+}
+body.theme-light .nav-overlay-menu hr {
+  border-top: 1px solid rgba(5,25,52,0.22);
+}
+
+/*──────────────────────────────
+   WORK DROPDOWN ARROW
+────────────────────────────── */
+.nav-arrow {
+  transition: transform 0.25s ease;
+}
+
+.has-sub.open .nav-arrow {
+  transform: rotate(180deg);
+}
+.has-sub {
+  display:flex;
+  flex-direction:column;
+align-items:center;
+}
+
+.has-sub > .nav-item-toggle {
+  align-self: stretch;     /* makes it span full container width */
+  text-align: left;
+  justify-content: space-between;  /* keeps arrow on the right */
+}
+
+/* SUBMENU CONTAINER (centered under Work, text left inside) */
+.sub-menu {
+  list-style: none;
+  margin-top: 10px;
+
+  width: 80%;          /* centers under Work */
+ justify-content: center;
+align-items: start;
+  padding-left: 0;     /* remove previous indentation */
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease;
+}
+
+
+/* OPEN STATE */
+.has-sub.open .sub-menu {
+  max-height: 420px;
+  opacity: 1;
+}
+
+/* SUBMENU LINKS */
+.sub-menu li a {
+  display: block;
+  text-align: left;   /* left-align text */
+  width: 100%;
+  padding-left: 6px;  /* optional soft indent */
+transform: scale(1.05);
+  width: 100%;
+
+  padding: 12px 0;
+
+  display: flex;
+  justify-content: space-between; /* keeps right dots aligned */
+  align-items: center;
+
+  transform: scale(1);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+
+.sub-menu li a:hover {
+  transform: scale(1.05);
+}
+
+/* SUBMENU DIVIDER */
+.sub-menu hr {
+  width: 100%;
+  margin: 10px 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+body.theme-light .sub-menu hr {
+  border-top: 1px solid rgba(5,25,52,0.12);
+}
+
+/*──────────────────────────────
+   RESPONSIVE TWEAKS
+────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-overlay-inner {
+    padding: 32px 24px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .nav-header {
+    justify-content:start;
+  }
+}
