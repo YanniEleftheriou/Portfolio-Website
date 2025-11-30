@@ -301,7 +301,7 @@ form {
   width: 15%;
   border: none;
   border-radius: 5px;
-  color: var(--fg-color);
+  color: var(--cream);
   cursor: pointer;
 background-color: var(--navy);   
   border: 1px solid var(--line-color);
