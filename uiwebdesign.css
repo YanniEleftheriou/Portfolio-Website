@@ -1,3 +1,28 @@
+/* ───────── Project links ONLY (inside work descriptions) ───────── */
+:root{
+  /* default = dark (navy bg) */
+  --proj-link: #9AA4FF;
+  --proj-link-hover: #C1C7FF;
+}
+
+body.theme-light{
+  /* light mode (cream bg) */
+  --proj-link: #1B4FD6;
+  --proj-link-hover: #0F3FBF;
+}
+
+.work-cont .desc a{
+  color: var(--proj-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.work-cont .desc a:hover{
+  color: var(--proj-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ─────────────────────────────
    FONT
    ───────────────────────────── */
