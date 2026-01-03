@@ -78,10 +78,10 @@ const prefersLight = window.matchMedia("(prefers-color-scheme: light)");
 function applyTheme(theme) {
   if (theme === "light") {
     document.body.classList.add("theme-light");
-    themeIcon.src = "Sun.svg";
+    themeIcon.src = "assets/svgs/Sun.svg";
   } else {
     document.body.classList.remove("theme-light");
-    themeIcon.src = "Moon.svg";
+    themeIcon.src = "assets/svgs/Moon.svg";
   }
 }
 

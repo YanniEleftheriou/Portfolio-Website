@@ -23,6 +23,7 @@ body.theme-light{
   text-underline-offset: 3px;
 }
 
+
 /* ─────────────────────────────
    FONT
    ───────────────────────────── */
@@ -151,6 +152,7 @@ body {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
+
 
 .work-cont {
   align-items:center;
