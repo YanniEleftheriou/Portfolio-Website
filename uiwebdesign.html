@@ -43,6 +43,114 @@
 <div class="mid-divider"></div>
 
         <div class="mid-line">
+
+
+<!-- Rythmeet section: replaces your current Rythmeet .work-cont block -->
+<div class="work-cont">
+  <div class="title">Rythmeet</div>
+  <div class="desc">Rythmeet is a music networking platform connecting musicians, teachers, venues, event organizers, and studios. As a UX/web design intern, I designed four core experiences and custom brand assets.</div>
+
+  <div class="rm">
+    <div class="rm-tabs" role="tablist" aria-label="Rythmeet experiences">
+      <button class="rm-tab" type="button" role="tab" id="rm-tab-1" aria-controls="rm-panel-1" aria-selected="true">Admin dashboard</button>
+      <button class="rm-tab" type="button" role="tab" id="rm-tab-2" aria-controls="rm-panel-2" aria-selected="false" tabindex="-1">Discover</button>
+      <button class="rm-tab" type="button" role="tab" id="rm-tab-3" aria-controls="rm-panel-3" aria-selected="false" tabindex="-1">Calendar</button>
+      <button class="rm-tab" type="button" role="tab" id="rm-tab-4" aria-controls="rm-panel-4" aria-selected="false" tabindex="-1">Sign-up</button>
+    </div>
+
+    <!-- 1: Admin dashboard -->
+    <section class="rm-panel" role="tabpanel" id="rm-panel-1" aria-labelledby="rm-tab-1">
+      <div class="rm-media">
+        <video muted loop playsinline preload="metadata" poster="images/rythmeet/admin-dashboard.jpg" aria-label="Admin dashboard prototype walkthrough">
+          <source src="AdminDashboardRec.mp4" type="video/mp4">
+        </video>
+        <button class="rm-play" type="button">Play</button>
+      </div>
+      <div class="rm-info">
+        <p class="rm-kicker">Outcome</p>
+        <h3>Rebuilt the admin dashboard around what needs attention</h3>
+        <h4>Problem</h4>
+        <p>The old dashboard was disorganized, so admins struggled to find and sort key information.</p>
+        <h4>Key decisions</h4>
+        <ul>
+          <li>Trimmed redundant sidebar links into a short, familiar menu.</li>
+          <li>Put platform health, verification, support tickets, and urgent actions first.</li>
+          <li>Made progress easy to present to stakeholders.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2: Discover -->
+    <section class="rm-panel" role="tabpanel" id="rm-panel-2" aria-labelledby="rm-tab-2" hidden>
+      <div class="rm-media">
+        <video muted loop playsinline preload="none" poster="images/rythmeet/discover.jpg" aria-label="Discover page prototype walkthrough">
+          <source src="DiscoverRed.mp4" type="video/mp4">
+        </video>
+        <button class="rm-play" type="button">Play</button>
+      </div>
+      <div class="rm-info">
+        <p class="rm-kicker">Outcome</p>
+        <h3>Turned a static profile grid into an explorable map</h3>
+        <h4>Problem</h4>
+        <p>Discovery is the core of the app, but profiles sat in a static 3×3 grid that limited connections.</p>
+        <h4>Key decisions</h4>
+        <ul>
+          <li>Designed a custom 3D map in Mapbox, styled to the Rythmeet brand.</li>
+          <li>Sorted nearby profiles by distance, with rates and reviews in view.</li>
+          <li>Paired the map overview with detailed profile previews.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3: Calendar -->
+    <section class="rm-panel" role="tabpanel" id="rm-panel-3" aria-labelledby="rm-tab-3" hidden>
+      <div class="rm-media">
+        <video muted loop playsinline preload="none" poster="images/rythmeet/calendar.jpg" aria-label="Calendar prototype walkthrough">
+          <source src="BookingRec.mp4" type="video/mp4">
+        </video>
+        <button class="rm-play" type="button">Play</button>
+      </div>
+      <div class="rm-info">
+        <p class="rm-kicker">Outcome</p>
+        <h3>Put schedules and requests on one calendar page</h3>
+        <h4>Problem</h4>
+        <p>Upcoming events and booking requests were scattered across pages, so scheduling felt overwhelming.</p>
+        <h4>Key decisions</h4>
+        <ul>
+          <li>Showed months ahead in a single calendar view.</li>
+          <li>Grouped incoming requests, pending requests, and schedule conflicts.</li>
+          <li>Added accept, message, and decline right on each request.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4: Sign-up -->
+    <section class="rm-panel" role="tabpanel" id="rm-panel-4" aria-labelledby="rm-tab-4" hidden>
+      <div class="rm-media">
+        <video muted loop playsinline preload="none" poster="images/rythmeet/sign-up.jpg" aria-label="Sign-up prototype walkthrough">
+          <source src="SignUpRec.mp4" type="video/mp4">
+        </video>
+        <button class="rm-play" type="button">Play</button>
+      </div>
+      <div class="rm-info">
+        <p class="rm-kicker">Outcome</p>
+        <h3>Cut sign-up from 8+ screens to 4–6</h3>
+        <h4>Problem</h4>
+        <p>Sign-up and profile creation were long, confusing, and repetitive, so new users risked quitting early.</p>
+        <h4>Key decisions</h4>
+        <ul>
+          <li>Removed repeated fields and shortened the forms.</li>
+          <li>Asked first for the info that shapes each user's experience.</li>
+          <li>Reordered steps for a clearer information hierarchy.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+
+
           <div class="work-cont">
             <div class="title">CrowdLink</div>
             <div class="desc">CrowdLink is a networking application designed to help users connect with others at concerts, events, and crowded spaces through shared interests and live interactions. I designed the full product experience in Figma, including user flows, UI layouts, and interaction patterns. I built a working prototype in code that simulates real-time discovery, messaging, and event-based matching.
@@ -139,5 +247,110 @@
 
 <div class="custom-cursor"></div>
     <script src="index.js"></script>
+    <script>// Rythmeet tabs + videos
+(function () {
+  function init() {
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('.rm').forEach(function (rm) {
+      var list = rm.querySelector('[role="tablist"]');
+      var tabs = Array.prototype.slice.call(rm.querySelectorAll('[role="tab"]'));
+      var current = 0;
+      var inView = !('IntersectionObserver' in window);
+
+      function panel(i) {
+        return document.getElementById(tabs[i].getAttribute('aria-controls'));
+      }
+
+      // Play only the open tab's video, and only while the section is on screen
+      function syncVideos() {
+        tabs.forEach(function (tab, i) {
+          var video = panel(i).querySelector('video');
+          if (!video) return;
+          var shouldPlay = i === current && inView && !reduceMotion && !video.dataset.userPaused;
+          if (shouldPlay) {
+            video.play().catch(function () {});
+          } else {
+            video.pause();
+          }
+        });
+      }
+
+      function select(index, moveFocus) {
+        current = index;
+        tabs.forEach(function (tab, i) {
+          var active = i === index;
+          tab.setAttribute('aria-selected', active ? 'true' : 'false');
+          tab.tabIndex = active ? 0 : -1;
+          panel(i).hidden = !active;
+        });
+        if (moveFocus) tabs[index].focus({ preventScroll: true });
+        // Keep the active tab in view when the row scrolls sideways on phones
+        list.scrollTo({ left: tabs[index].offsetLeft - 24, behavior: reduceMotion ? 'auto' : 'smooth' });
+        syncVideos();
+      }
+
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function () {
+          select(i, false);
+        });
+        // Arrow keys move between tabs
+        tab.addEventListener('keydown', function (e) {
+          var next = null;
+          if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+          if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+          if (e.key === 'Home') next = 0;
+          if (e.key === 'End') next = tabs.length - 1;
+          if (next !== null) {
+            e.preventDefault();
+            select(next, true);
+          }
+        });
+      });
+
+      // Pause / Play button on each video
+      rm.querySelectorAll('.rm-media').forEach(function (media) {
+        var video = media.querySelector('video');
+        var button = media.querySelector('.rm-play');
+        if (!video || !button) return;
+        video.muted = true;
+        function update() {
+          var label = video.paused ? 'Play' : 'Pause';
+          button.textContent = label;
+          button.setAttribute('aria-label', label + ' video');
+        }
+        video.addEventListener('play', update);
+        video.addEventListener('pause', update);
+        button.addEventListener('click', function () {
+          if (video.paused) {
+            delete video.dataset.userPaused;
+            video.play().catch(function () {});
+          } else {
+            video.dataset.userPaused = 'true';
+            video.pause();
+          }
+        });
+        update();
+      });
+
+      // Start playing when the section scrolls into view, pause when it leaves
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          inView = entries[0].isIntersecting;
+          syncVideos();
+        }, { threshold: 0.4 }).observe(rm);
+      }
+      syncVideos();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+</script>
   </body>
 </html>
