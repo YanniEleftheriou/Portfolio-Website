@@ -23,6 +23,7 @@ body.theme-light{
   text-underline-offset: 3px;
 }
 
+
 /* ─────────────────────────────
    FONT
    ───────────────────────────── */
@@ -152,6 +153,7 @@ body {
   scroll-behavior: smooth;
 }
 
+
 .work-cont {
   align-items:center;
   justify-content:center;
@@ -188,6 +190,193 @@ iframe {
   width:100%;
   height:100%;
 }
+
+/* ─────────────────────────────
+  RYTHMEET TABS CSS
+   ───────────────────────────── */
+/* ===== Rythmeet tabs ===== */
+
+.rm {
+  --rm-ink: #0A1932;    /* your navy */
+  --rm-muted: #56607C;  /* inactive tabs and labels */
+  --rm-line: #DDCDB6;   /* hairlines */
+  --rm-tint: #F5E7D4;   /* video background */
+  --rm-bg: #FDF3E6;     /* your cream */
+  width: 100%;
+  font-family: Satoshi, sans-serif;
+  color: var(--rm-ink);
+}
+
+/* Tab row: scrolls sideways on small screens */
+.rm-tabs {
+  position: relative;
+  display: flex;
+  gap: clamp(20px, 3vw, 40px);
+  overflow-x: auto;
+  scrollbar-width: none;
+  box-shadow: inset 0 -1px 0 var(--rm-line); /* hairline under the row */
+}
+.rm-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.rm-tab {
+  flex: 0 0 auto;
+  padding: 12px 0 14px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: clamp(15px, 1.6vw, 19px);
+  font-weight: 500;
+  color: var(--rm-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s ease, box-shadow 0.2s ease;
+}
+.rm-tab:hover {
+  color: var(--rm-ink);
+}
+.rm-tab[aria-selected="true"] {
+  color: var(--rm-ink);
+  box-shadow: inset 0 -2px 0 var(--proj-link); /* active underline */
+}
+.rm-tab:focus-visible {
+  outline: 2px solid var(--proj-link);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+/* Panels: the video gets the bigger column */
+.rm-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+  padding-top: clamp(20px, 3vh, 32px);
+}
+.rm-panel[hidden] {
+  display: none; /* display: grid would otherwise override [hidden] */
+}
+
+/* Video */
+.rm-media {
+  position: relative;
+  height: clamp(260px, 50vh, 480px);
+  border-radius: 6px;
+  background: var(--rm-tint);
+  overflow: hidden;
+}
+.rm-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.rm-play {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  min-width: 72px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--rm-line);
+  border-radius: 22px;
+  background: rgba(253, 243, 230, 0.92);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--rm-ink);
+  cursor: pointer;
+}
+.rm-play:hover {
+  background: var(--rm-bg);
+}
+.rm-play:focus-visible {
+  outline: 2px solid var(--proj-link);
+  outline-offset: 2px;
+}
+
+/* Text: outcome leads, then problem and decisions */
+.rm-info .rm-kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--proj-link);
+}
+.rm-info h3 {
+  margin: 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rm-line);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 500;
+  line-height: 1.25;
+}
+.rm-info h4 {
+  margin: 16px 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--rm-muted);
+}
+.rm-info p,
+.rm-info li {
+  margin: 0;
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.5;
+}
+.rm-info ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.rm-info li + li {
+  margin-top: 6px;
+}
+.rm-info li::marker {
+  color: var(--proj-link);
+}
+
+/* Phones: stack video above text */
+@media (max-width: 800px) {
+  .rm-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rm-media {
+    height: clamp(220px, 40vh, 360px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rm-tab {
+    transition: none;
+  }
+}
+
+
+/* Phones: stack the panel, full-screen viewer */
+@media (max-width: 800px) {
+  .rm-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rm-media {
+    height: clamp(220px, 34vh, 320px);
+  }
+  .rm-dialog {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rm-tab,
+  .rm-proto {
+    transition: none;
+  }
+}
+
+
 /* ─────────────────────────────
    LOGO
    ───────────────────────────── */
